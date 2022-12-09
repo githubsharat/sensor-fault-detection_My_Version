@@ -1,33 +1,24 @@
-from setuptools import find_packages, setup   
+from setuptools import find_packages,setup
+from typing import List
 
-
-def get_requirements():
+def get_requirements()->List[str]:
     """
-    Description: This function is going to return list of requirement
-    mention in requirements.txt file
-    return This function is going to return a list which contain name
-    of libraries mentioned in requirements.txt file
+    This function will return list of requirements
     """
-    requirement_list = []
+    requirement_list:List[str] = []
 
-
-    HYPHEN_E_DOT = "-e ."
-    with open("requirements.txt") as requirement_file:
-        requirement_list = requirement_file.readlines()
-        requirement_list = [requirement_name.replace("\n", "") for requirement_name in requirement_list]
-        if HYPHEN_E_DOT in requirement_list:
-            requirement_list.remove(HYPHEN_E_DOT)
+    """
+    Write a code to read requirements.txt file and append each requirements in requirement_list variable.
+    """
     return requirement_list
 
 
 setup(
- 
-    name = "sensor",                   #           
-    version = "0.0,1",                 # Any version no. Let's say 0.0.1
-    author = "Sharat",                 # Author's name
-    author_email = "test@test.com",    # Author's email
-    packages = find_packages(),        # We will call a function find_packages. This will search for all packages within the project folder.
-    #install_requires = ["pymongo==4.2.0"] # Here we write a list of libraries needed for this project. The libraries we mention in requirements.txt needs be mentioned here.
-    install_requires = get_requirements()
-)
+    name="sensor",
+    version="0.0.1",
+    author="iNeuron",
+    author_email="test@test.com",
+    packages = find_packages(),
+    install_requires=get_requirements(),#["pymongo==4.2.0"]
+    )
 
